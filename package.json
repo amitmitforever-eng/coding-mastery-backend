@@ -1,0 +1,30 @@
+{
+  "name": "coding-mastery-backend",
+  "version": "1.0.0",
+  "description": "Coding Mastery backend API (Express + MySQL + JWT)",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "reset-data": "node scripts/reset-data.js",
+    "seed-courses": "node scripts/seed-courses.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.1.1",
+    "mysql2": "^3.11.4",
+    "nodemailer": "^8.0.10",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

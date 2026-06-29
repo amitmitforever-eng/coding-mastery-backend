@@ -1,0 +1,9 @@
+node_modules
+.env
+.env.local
+*.log
+.DS_Store
+
+# Teacher-uploaded course covers (kept on disk, served from /uploads)
+uploads/
+!uploads/.gitkeep
