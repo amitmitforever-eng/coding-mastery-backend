@@ -1,13 +1,17 @@
 /** Official Coding Mastery YouTube channel — single source of truth (backend). */
-const YOUTUBE_CHANNEL_URL = "https://www.youtube.com/@codingmasterybyamit";
-const YOUTUBE_CHANNEL_HANDLE = "codingmasterybyamit";
+const YOUTUBE_CHANNEL_URL = "https://www.youtube.com/@codingmasterywithamit";
+const YOUTUBE_CHANNEL_HANDLE = "codingmasterywithamit";
 
 /** Old handles that should redirect to the canonical channel URL. */
-const LEGACY_CHANNEL_HANDLES = ["codemasterybyamit", "codingimprove"];
+const LEGACY_CHANNEL_HANDLES = [
+  "codingmasterybyamit",
+  "codemasterybyamit",
+  "codingimprove",
+];
 
 /**
  * Normalize a YouTube channel / playlist URL. Rewrites known legacy channel
- * handles to the canonical @codingmasterybyamit URL.
+ * handles to the canonical @codingmasterywithamit URL.
  */
 function normalizeYoutubeUrl(url) {
   if (!url || typeof url !== "string") return null;

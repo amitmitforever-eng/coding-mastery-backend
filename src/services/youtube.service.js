@@ -64,7 +64,7 @@ function bestThumb(thumbnails) {
   )?.url ?? null;
 }
 
-/** Resolve the channel handle (e.g. "codingmasterybyamit") to a channel id. */
+/** Resolve the channel handle (e.g. "codingmasterywithamit") to a channel id. */
 async function getChannelId() {
   if (resolvedChannelId) return resolvedChannelId;
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 29, 2026 at 05:59 PM
+-- Generation Time: Jul 11, 2026 at 12:08 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -61,6 +61,13 @@ CREATE TABLE `courses` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `courses`
+--
+
+INSERT INTO `courses` (`id`, `slug`, `title`, `description`, `category`, `difficulty`, `duration`, `language`, `certificate`, `image_url`, `image_gradient`, `youtube_url`, `instructor_name`, `instructor_title`, `instructor_bio`, `instructor_experience_years`, `instructor_expertise`, `instructor_users_taught`, `levels_json`, `teacher_id`, `status`, `rejection_reason`, `approved_by`, `approved_at`, `submitted_at`, `is_published`, `is_featured`, `discount_percent`, `commission_percent`, `created_at`, `updated_at`) VALUES
+(5, 'microfrontend-react-jg35zp', 'Microfrontend React', 'Micro frontend is used in React js . it can help to developed  frontend application , and you can develop fast', 'Frontend', 'Basic', '5', 'English', 1, 'http://localhost:5000/uploads/courses/course-1782992383417-fdcbbd0ab759.jpg', 'from-slate-700 via-slate-800 to-slate-900', 'https://www.youtube.com/@codingmasterybyamit', 'Roma', 'Senior Frontend developer', 'I have 12 year experience frontend development in micro frontend', 4, '[\"Nodejs\",\"React js\",\"Mongo DB\"]', '45', '{\"Basic\":{\"price\":8011,\"longDescription\":\"Overview / long description his is the long description  1 for basic label\",\"learningOutcomes\":[\"Learning outcomes 1\"],\"prerequisites\":[\"html\",\"clls\",\"nextjs\",\"react\",\"xaaa\",\"java script\"],\"modules\":[{\"id\":\"\",\"title\":\"Syllabus modules1\",\"topics\":[\"Topics in this module\"]}],\"topicsCovered\":[{\"question\":\"Topics covered (Q&A shown on Topics Covered tab) for basic\",\"answer\":\"Topics covered (Q&A shown on Topics Covered tab) for basic\"}],\"interviewQuestions\":[{\"question\":\"Interview question edit1\",\"answer\":\"Interview question edit1 answer\"}]},\"Intermediate\":{\"price\":7221,\"longDescription\":\"Overview / long description\",\"learningOutcomes\":[\"Learning outcomes 1\",\"Learning outcomes 2\"],\"prerequisites\":[\"Prerequisites1\",\"Prerequisites2\"],\"modules\":[{\"id\":\"\",\"title\":\"Syllabus modules1\",\"topics\":[\"Topics in this module1\"]}],\"topicsCovered\":[{\"question\":\"Topics covered (Q&A shown on Topics Covered tab) question1\",\"answer\":\"Topics covered (Q&A shown on Topics Covered tab) ans 1\"}],\"interviewQuestions\":[{\"question\":\"Interview question 1\",\"answer\":\"Interview question1\"}]},\"Advanced\":{\"price\":90000,\"longDescription\":\"Overview / long description1\",\"learningOutcomes\":[\"Learning outcomes\"],\"prerequisites\":[\"Prerequisites\"],\"modules\":[{\"id\":\"\",\"title\":\"Syllabus modules1\",\"topics\":[\"Topics in this module1\"]}],\"topicsCovered\":[{\"question\":\"Topics covered (Q&A shown on Topics Covered tab)\",\"answer\":\"Topics covered (Q&A shown on Topics Covered tab)\"}],\"interviewQuestions\":[{\"question\":\"Interview question\",\"answer\":\"Interview question answer\"}]}}', 11, 'approved', NULL, 12, '2026-07-01 16:00:27', '2026-07-01 15:24:15', 1, 0, NULL, NULL, '2026-07-01 15:24:15', '2026-07-02 12:31:54');
+
 -- --------------------------------------------------------
 
 --
@@ -94,6 +101,14 @@ CREATE TABLE `course_revisions` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `course_revisions`
+--
+
+INSERT INTO `course_revisions` (`id`, `course_id`, `teacher_id`, `status`, `data_json`, `admin_note`, `reviewed_by`, `reviewed_at`, `created_at`, `updated_at`) VALUES
+(10, 5, 11, 'approved', '{\"title\":\"Microfrontend React\",\"description\":\"Micro frontend is used in React js . it can help to developed  frontend application\",\"category\":\"Frontend\",\"difficulty\":\"Basic\",\"duration\":\"5\",\"language\":\"English\",\"certificate\":true,\"imageUrl\":\"http://localhost:5000/uploads/courses/course-1782992383417-fdcbbd0ab759.jpg\",\"imageGradient\":\"from-slate-700 via-slate-800 to-slate-900\",\"youtubeUrl\":\"https://www.youtube.com/@codingmasterybyamit\",\"instructor\":{\"name\":\"Roma\",\"title\":\"Senior Frontend developer\",\"bio\":\"I have 12 year experience frontend development in micro frontend\",\"experienceYears\":4,\"expertise\":[\"Nodejs\",\"React js\",\"Mongo DB\"],\"usersTaught\":\"45\"},\"levels\":{\"Basic\":{\"price\":8000,\"longDescription\":\"Overview / long description his is the long description  1 for basic label\",\"learningOutcomes\":[\"Learning outcomes 1\"],\"prerequisites\":[\"html\",\"clls\",\"nextjs\",\"react\",\"xaaa\",\"java script\"],\"modules\":[{\"id\":\"\",\"title\":\"Syllabus modules1\",\"topics\":[\"Topics in this module\"]}],\"topicsCovered\":[{\"question\":\"Topics covered (Q&A shown on Topics Covered tab) for basic\",\"answer\":\"Topics covered (Q&A shown on Topics Covered tab) for basic\"}],\"interviewQuestions\":[{\"question\":\"interview question for basic\",\"answer\":\"interview ans for the basic\"}]},\"Intermediate\":{\"price\":7000,\"longDescription\":\"Overview / long description\",\"learningOutcomes\":[\"Learning outcomes 1\",\"Learning outcomes 2\"],\"prerequisites\":[\"Prerequisites1\",\"Prerequisites2\"],\"modules\":[{\"id\":\"\",\"title\":\"Syllabus modules1\",\"topics\":[\"Topics in this module1\"]}],\"topicsCovered\":[{\"question\":\"Topics covered (Q&A shown on Topics Covered tab) question1\",\"answer\":\"Topics covered (Q&A shown on Topics Covered tab) ans 1\"}],\"interviewQuestions\":[{\"question\":\"Interview question 1\",\"answer\":\"Interview question1\"}]},\"Advanced\":{\"price\":90000,\"longDescription\":\"Overview / long description1\",\"learningOutcomes\":[\"Learning outcomes\"],\"prerequisites\":[\"Prerequisites\"],\"modules\":[{\"id\":\"\",\"title\":\"Syllabus modules1\",\"topics\":[\"Topics in this module1\"]}],\"topicsCovered\":[{\"question\":\"Topics covered (Q&A shown on Topics Covered tab)\",\"answer\":\"Topics covered (Q&A shown on Topics Covered tab)\"}],\"interviewQuestions\":[{\"question\":\"Interview question\",\"answer\":\"Interview question answer\"}]}}}', NULL, 12, '2026-07-02 11:54:31', '2026-07-02 11:42:55', '2026-07-02 11:54:31'),
+(11, 5, 11, 'approved', '{\"title\":\"Microfrontend React\",\"description\":\"Micro frontend is used in React js . it can help to developed  frontend application , and you can develop fast\",\"category\":\"Frontend\",\"difficulty\":\"Basic\",\"duration\":\"5\",\"language\":\"English\",\"certificate\":true,\"imageUrl\":\"http://localhost:5000/uploads/courses/course-1782992383417-fdcbbd0ab759.jpg\",\"imageGradient\":\"from-slate-700 via-slate-800 to-slate-900\",\"youtubeUrl\":\"https://www.youtube.com/@codingmasterybyamit\",\"instructor\":{\"name\":\"Roma\",\"title\":\"Senior Frontend developer\",\"bio\":\"I have 12 year experience frontend development in micro frontend\",\"experienceYears\":4,\"expertise\":[\"Nodejs\",\"React js\",\"Mongo DB\"],\"usersTaught\":\"45\"},\"levels\":{\"Basic\":{\"price\":8000,\"longDescription\":\"Overview / long description his is the long description  1 for basic label\",\"learningOutcomes\":[\"Learning outcomes 1\"],\"prerequisites\":[\"html\",\"clls\",\"nextjs\",\"react\",\"xaaa\",\"java script\"],\"modules\":[{\"id\":\"\",\"title\":\"Syllabus modules1\",\"topics\":[\"Topics in this module\"]}],\"topicsCovered\":[{\"question\":\"Topics covered (Q&A shown on Topics Covered tab) for basic\",\"answer\":\"Topics covered (Q&A shown on Topics Covered tab) for basic\"}],\"interviewQuestions\":[{\"question\":\"Interview question edit1\",\"answer\":\"Interview question edit1 answer\"}]},\"Intermediate\":{\"price\":7000,\"longDescription\":\"Overview / long description\",\"learningOutcomes\":[\"Learning outcomes 1\",\"Learning outcomes 2\"],\"prerequisites\":[\"Prerequisites1\",\"Prerequisites2\"],\"modules\":[{\"id\":\"\",\"title\":\"Syllabus modules1\",\"topics\":[\"Topics in this module1\"]}],\"topicsCovered\":[{\"question\":\"Topics covered (Q&A shown on Topics Covered tab) question1\",\"answer\":\"Topics covered (Q&A shown on Topics Covered tab) ans 1\"}],\"interviewQuestions\":[{\"question\":\"Interview question 1\",\"answer\":\"Interview question1\"}]},\"Advanced\":{\"price\":90000,\"longDescription\":\"Overview / long description1\",\"learningOutcomes\":[\"Learning outcomes\"],\"prerequisites\":[\"Prerequisites\"],\"modules\":[{\"id\":\"\",\"title\":\"Syllabus modules1\",\"topics\":[\"Topics in this module1\"]}],\"topicsCovered\":[{\"question\":\"Topics covered (Q&A shown on Topics Covered tab)\",\"answer\":\"Topics covered (Q&A shown on Topics Covered tab)\"}],\"interviewQuestions\":[{\"question\":\"Interview question\",\"answer\":\"Interview question answer\"}]}}}', NULL, 12, '2026-07-02 12:31:54', '2026-07-02 12:30:09', '2026-07-02 12:31:54');
+
 -- --------------------------------------------------------
 
 --
@@ -118,7 +133,10 @@ CREATE TABLE `enrollments` (
 --
 
 INSERT INTO `enrollments` (`id`, `user_id`, `course_slug`, `enrolled_at`, `purchased`, `purchased_at`, `purchased_levels`, `progress`, `created_at`, `updated_at`) VALUES
-(16, 13, 'postgresql', '2026-06-28 17:14:26', 0, NULL, '[]', 18, '2026-06-28 17:14:26', '2026-06-28 17:14:26');
+(16, 13, 'postgresql', '2026-06-28 17:14:26', 0, NULL, '[]', 18, '2026-06-28 17:14:26', '2026-06-28 17:14:26'),
+(17, 10, 'next-js', '2026-06-29 18:01:14', 1, '2026-06-29 18:01:41', '[\"Advanced\"]', 18, '2026-06-29 18:01:14', '2026-06-29 18:01:41'),
+(18, 10, 'microfrontend-react-jg35zp', '2026-07-02 12:40:13', 1, '2026-07-02 12:40:19', '[\"Intermediate\",\"Advanced\"]', 11, '2026-07-02 12:40:13', '2026-07-02 12:43:41'),
+(19, 10, 'aws', '2026-07-02 12:46:44', 1, '2026-07-02 12:46:46', '[\"Basic\"]', 12, '2026-07-02 12:46:44', '2026-07-02 12:46:46');
 
 -- --------------------------------------------------------
 
@@ -285,7 +303,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `course_levels`
@@ -297,13 +315,13 @@ ALTER TABLE `course_levels`
 -- AUTO_INCREMENT for table `course_revisions`
 --
 ALTER TABLE `course_revisions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `enrollments`
 --
 ALTER TABLE `enrollments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `password_reset_tokens`

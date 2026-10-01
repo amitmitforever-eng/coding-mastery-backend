@@ -206,6 +206,12 @@ const rejectSchema = z.object({
     .max(500, "Rejection reason is too long (max 500 characters)."),
 });
 
+const LEVELS_RECORD = z.object({
+  Basic: z.object({ price: z.number().nonnegative() }).optional(),
+  Intermediate: z.object({ price: z.number().nonnegative() }).optional(),
+  Advanced: z.object({ price: z.number().nonnegative() }).optional(),
+});
+
 const revisionApproveSchema = z.object({
   note: z
     .string()
@@ -213,12 +219,8 @@ const revisionApproveSchema = z.object({
     .max(500, "Note is too long (max 500 characters).")
     .optional()
     .or(z.literal("")),
-});
-
-const LEVELS_RECORD = z.object({
-  Basic: z.object({ price: z.number().nonnegative() }).optional(),
-  Intermediate: z.object({ price: z.number().nonnegative() }).optional(),
-  Advanced: z.object({ price: z.number().nonnegative() }).optional(),
+  /** Admin may override per-level prices when applying a teacher's revision. */
+  levels: LEVELS_RECORD.optional(),
 });
 
 /** Admin-only course controls: pricing, discount, featured, publish. */
@@ -255,6 +257,22 @@ function ensureInstructorBlanksAreNulls(data) {
   normalized.imageGradient = normalized.imageGradient || undefined;
   normalized.youtubeUrl = normalizeYoutubeUrl(normalized.youtubeUrl);
   return normalized;
+}
+
+/** Merge admin price overrides into a course payload before apply. */
+function mergeAdminLevelPrices(data, levelPrices) {
+  if (!levelPrices) return data;
+  const merged = {
+    ...data,
+    levels: { ...data.levels },
+  };
+  for (const level of LEVELS) {
+    const price = levelPrices[level]?.price;
+    if (price != null && merged.levels[level]) {
+      merged.levels[level] = { ...merged.levels[level], price };
+    }
+  }
+  return merged;
 }
 
 /** Teachers cannot change course title or per-level price; keep existing values. */
@@ -626,7 +644,8 @@ async function adminApproveRevision(req, res, next) {
     if (!course) throw new HttpError(404, "Course no longer exists");
 
     // Apply the proposed snapshot to the live course, then mark approved.
-    const data = ensureInstructorBlanksAreNulls({ ...revision.data });
+    let data = ensureInstructorBlanksAreNulls({ ...revision.data });
+    data = mergeAdminLevelPrices(data, req.body?.levels);
     await CourseModel.updateById(course.id, data);
     const updated = await CourseRevisionModel.review(revision.id, {
       status: "approved",
